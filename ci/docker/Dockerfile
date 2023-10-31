@@ -1,3 +1,4 @@
 FROM docker.io/ubuntu:22.04
 
-RUN echo test
+# sleep - allows debugging
+RUN sleep 300 && echo test
