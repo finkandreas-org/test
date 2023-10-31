@@ -2,12 +2,17 @@ include:
   - remote: 'https://gitlab.com/cscs-ci/recipes/-/raw/master/templates/v2/.ci-ext.yml'
 
 stages:
-  - build
+  - test
 
-build job:
-  extends: .container-builder
-  stage: build
-  timeout: 10h
-  variables:
-    PERSIST_IMAGE_NAME: discard
-    DOCKERFILE: ci/docker/Dockerfile
+test job:
+  extends: .container-runner-daint-gpu
+  image: docker.io/ubuntu:22.04
+  stage: test
+  script:
+    - mkdir -p my_buildcache
+    - ls -lh my_buildcache
+    - echo 1234 > my_buildcache/some_file
+  cache:
+    key: build-cache
+    paths:
+      - my_buildcache/**
