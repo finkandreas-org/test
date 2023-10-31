@@ -6,6 +6,7 @@ stages:
 
 build job:
   extends: .container-builder
+  stage: build
   variables:
     PERSIST_IMAGE_NAME: discard
     DOCKERFILE: ci/docker/Dockerfile
