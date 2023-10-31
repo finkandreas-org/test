@@ -6,7 +6,7 @@ stages:
 
 test job:
   extends: .container-runner-daint-gpu
-  image: docker.io/ubuntu:22.04
+  image: ubuntu:22.04
   stage: test
   script:
     - mkdir -p my_buildcache
